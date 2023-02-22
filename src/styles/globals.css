@@ -254,3 +254,11 @@ input {
 .font-inter {
   font-family: "Inter", sans-serif !important;
 }
+
+.definition-span {
+  font-weight: bold;
+}
+
+li {
+  margin-bottom: 10px;
+}

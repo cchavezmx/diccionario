@@ -8,7 +8,6 @@ const Definition = ({ result }) => {
   
   // desarrolador Sr
   const [definition] = result
-  console.log('🚀 ~ file: Definition.js:7 ~ Definition ~ definition:', definition)
   const handledAudioSelect = () => {
     const { phonetics, phonetic } = definition
     const currentAudio = phonetics.find((element) =>
@@ -45,10 +44,15 @@ const Definition = ({ result }) => {
                 </div>
                 <ul>
                   {
-                    meaning.definitions.map((definition, index) => {
+                    meaning.definitions.map((element, index) => {
+                      const { definition, example, antonyms, synonyms } = element
                       return (
                         <li key={index}>
-                          <p>{definition.definition}</p>
+                          <p style={{ marginBottom: '10px' }}>{definition}</p>
+                          {example && <p><span className="definition-span">example: </span>{example}</p>}
+                          {/* cada linea se encargue de 1 cosa */}
+                          {antonyms.length > 0 && <p><span className="definition-span">antonyms: </span>{antonyms.join(', ')}</p>}
+                          {synonyms.length > 0 && <p><span className="definition-span">synonyms: </span>{synonyms.join(', ')}</p>}
                         </li>
                       )
                     })
