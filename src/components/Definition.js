@@ -1,10 +1,21 @@
 const Definition = ({ result }) => {
+  // ejemplo para validar que results sea un arreglo
+  // if (!Array.isArray(result)) {
+  //   return null
+  // }
   // desarrollador JR
   // const definition = result[0]
   
   // desarrolador Sr
   const [definition] = result
   console.log('🚀 ~ file: Definition.js:7 ~ Definition ~ definition:', definition)
+  const handledAudioSelect = () => {
+    const { phonetics, phonetic } = definition
+    const currentAudio = phonetics.find((element) =>
+      // eslint-disable-next-line no-prototype-builtins
+      element.text === phonetic && element.hasOwnProperty('audio'))
+    return currentAudio?.audio
+  }
 
   return (
     <>
@@ -18,7 +29,7 @@ const Definition = ({ result }) => {
           </span>
         </span>
         <span>
-        <audio src="https://ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3" preload="none" controls></audio>
+        <audio src={handledAudioSelect()} preload="none" controls></audio>
         </span>
       </div>
     </>

@@ -66,7 +66,14 @@ export default function Home () {
           </button>
         </form>
         <div>
-            <Definition result={result} />
+            {
+              Array.isArray(result)
+                ? <Definition result={result} />
+                : null
+            }
+            {/* {
+              result.length > 0 && <Definition result={result} />
+            } */}
         </div>
         </main>
         <footer></footer>
