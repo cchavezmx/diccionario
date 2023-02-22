@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 // https://nextjs.org/docs/advanced-features/module-path-aliases
 import { useState } from 'react'
+import Definition from '@/components/Definition'
 
 export default function Home () {
   const [result, setResult] = useState({})
@@ -65,7 +66,7 @@ export default function Home () {
           </button>
         </form>
         <div>
-            { JSON.stringify(result) }
+            <Definition result={result} />
         </div>
         </main>
         <footer></footer>
