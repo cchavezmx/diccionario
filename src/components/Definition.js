@@ -32,6 +32,33 @@ const Definition = ({ result }) => {
         <audio src={handledAudioSelect()} preload="none" controls></audio>
         </span>
       </div>
+      <div className="definition_meaning">
+        {
+          definition.meanings.map((meaning, index) => {
+            return (
+              <div className="deff" key={index}>
+                <div className="deff_type">
+                  <h3>
+                    {meaning.partOfSpeech}
+                  </h3>
+                  <span className='deff_line'></span>
+                </div>
+                <ul>
+                  {
+                    meaning.definitions.map((definition, index) => {
+                      return (
+                        <li key={index}>
+                          <p>{definition.definition}</p>
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+              </div>
+            )
+          })
+        }
+      </div>
     </>
   )
 }
