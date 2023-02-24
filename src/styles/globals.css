@@ -262,3 +262,12 @@ input {
 li {
   margin-bottom: 10px;
 }
+
+.btn-capture {
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 999px;
+  border: transparent;
+  font-size: 2rem;
+  background-color: transparent;
+}

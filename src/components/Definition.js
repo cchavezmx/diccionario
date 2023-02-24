@@ -1,4 +1,9 @@
+import html2canvas from 'html2canvas'
+import { useEffect, useRef } from 'react'
+
 const Definition = ({ result }) => {
+  const captureRef = useRef(null)
+  console.log('🚀 ~ file: Definition.js:6 ~ Definition ~ captureRef:', captureRef)
   // ejemplo para validar que results sea un arreglo
   // if (!Array.isArray(result)) {
   //   return null
@@ -8,6 +13,7 @@ const Definition = ({ result }) => {
   
   // desarrolador Sr
   const [definition] = result
+  console.log('🚀 ~ file: Definition.js:16 ~ Definition ~ definition:', definition)
   const handledAudioSelect = () => {
     const { phonetics, phonetic } = definition
     const currentAudio = phonetics.find((element) =>
@@ -16,12 +22,30 @@ const Definition = ({ result }) => {
     return currentAudio?.audio
   }
 
+  useEffect(() => {
+    if (captureRef.current) {
+      console.log(captureRef)
+    }
+  }, [])
+
+  const handledCaputure = () => {
+    if (captureRef.current) {
+      html2canvas(captureRef.current)
+        .then(canvas => {
+          console.log(canvas)
+        })
+    }
+  }
+
   return (
-    <>
+    <section ref={captureRef}>
       <div className="word_section">
         <span>
           <h2>
             {definition.word}
+            <button onClick={handledCaputure} className='btn-capture'>
+              📷
+            </button>
           </h2>
           <span>
             {definition.phonetic}
@@ -63,7 +87,7 @@ const Definition = ({ result }) => {
           })
         }
       </div>
-    </>
+    </section>
   )
 }
 
