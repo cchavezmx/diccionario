@@ -1,9 +1,8 @@
 import html2canvas from 'html2canvas'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 
 const Definition = ({ result }) => {
   const captureRef = useRef(null)
-  console.log('🚀 ~ file: Definition.js:6 ~ Definition ~ captureRef:', captureRef)
   // ejemplo para validar que results sea un arreglo
   // if (!Array.isArray(result)) {
   //   return null
@@ -13,7 +12,6 @@ const Definition = ({ result }) => {
   
   // desarrolador Sr
   const [definition] = result
-  console.log('🚀 ~ file: Definition.js:16 ~ Definition ~ definition:', definition)
   const handledAudioSelect = () => {
     const { phonetics, phonetic } = definition
     const currentAudio = phonetics.find((element) =>
@@ -21,18 +19,17 @@ const Definition = ({ result }) => {
       element.text === phonetic && element.hasOwnProperty('audio'))
     return currentAudio?.audio
   }
-
-  useEffect(() => {
-    if (captureRef.current) {
-      console.log(captureRef)
-    }
-  }, [])
-
+  
   const handledCaputure = () => {
     if (captureRef.current) {
       html2canvas(captureRef.current)
         .then(canvas => {
-          console.log(canvas)
+          // bukets
+          const imagenPng = canvas.toDataURL('image/png')
+          const a = document.createElement('a')
+          a.href = imagenPng
+          a.download = 'pepitoimagen.png'
+          a.click()
         })
     }
   }
