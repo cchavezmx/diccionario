@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Definition from '@/components/Definition'
 
 export default function Home () {
-  const [result, setResult] = useState({})
+  const [result, setResult] = useState(null)
 
   const handledSarh = (e) => {
     e.preventDefault()
@@ -48,7 +48,7 @@ export default function Home () {
       </Head>
       <main className={font}>
         <header>
-          <Image src="/logobook.png" alt="logo" height={40} width={40}/>
+          <Image src="/logobook.png" alt="logo" height={60} width={60} onClick={() => window.location.reload()}/>
           {/* <h1>Diccionario</h1> */}
           <select className={font} onChange={(e) => handleChangeFont(e.target.value)}>
             <option value='montserrat' className="font-montserrat">Montserrat</option>
@@ -74,6 +74,15 @@ export default function Home () {
             {/* {
               result.length > 0 && <Definition result={result} />
             } */}
+            {
+              !result && (
+                <div className='result_empty'>
+                <h2>
+                  Add a word to search
+                </h2>
+              </div>
+              )
+            }
         </div>
         </main>
         <footer></footer>

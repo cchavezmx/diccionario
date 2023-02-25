@@ -271,3 +271,15 @@ li {
   font-size: 2rem;
   background-color: transparent;
 }
+
+.result_empty {
+  display: grid;
+  place-content: center;
+  margin-top: 8rem;
+}
+
+.result_empty h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
